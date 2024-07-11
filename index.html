@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>KYC Verification Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: url('a.jpg') center/cover no-repeat;
+        }
+
+        #kycForm {
+            background-color: rgba(157, 148, 148, 0.8);
+            padding: 44px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 1250px;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .resetBtn {
+            background-color: #f44336;
+        }
+
+        .resetBtn:hover {
+            background-color: #d32f2f;
+        }
+
+        .documentTypeBtn {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            margin: 8px 4px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .documentTypeBtn:hover {
+            background-color: #011721;
+        }
+
+        .documentTypeBtn {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            margin: 8px 4px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .documentTypeBtn:hover {
+            background-color: #2980b9;
+        }
+
+        .imageBox {
+            border: 2px dashed #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            /* background:rgba(255, 255, 255, 0.8) url('b.jpg') center/cover no-repeat ; */
+             ;
+        }
+
+        .imageBox label {
+            display: block;
+            margin-bottom: 5px
+            
+        }
+
+        .progress-container {
+            position: relative;
+            width: 100%;
+            height: 24px;
+            background-color: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #4caf50;
+            text-align: center;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            width: 25%;
+            position: relative;
+        }
+
+        .pointer {
+            position: absolute;
+            top: -25px;
+            height: 100%;
+            width: 3px;
+            background-color: red; /* Color of the pointer */
+            content: "";
+        }
+
+        .pointer-text {
+            position: absolute;
+            top: -20px;
+            color: red; /* Color of the text */
+        }
+
+        .pointer:before,
+        .pointer:after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: red; /* Color of the pointer */
+        }
+
+        .pointer:before {
+            left: -5px;
+        }
+
+        .pointer:after {
+            right: -5px;
+        }
+
+        #completedProgress {
+            height: 100%;
+            background-color: #4caf50;
+            text-align: center;
+            color: #886767;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        #incompleteProgress {
+            height: 100%;
+            background-color: #fff;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .file-input-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .file-input-icon {
+            margin-right: 8px;
+            font-size: 24px; /* Set the desired font size here */
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="kycForm">
+    <h2>KYC Verification Form</h2>
+
+    <!-- Your existing form content -->
+    <div class="w3-container">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="pointer"></div>
+                <div class="pointer-text">2%</div>
+                25%
+                <div class="pointer"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- <div id="progressContainer">
+        <div id="progressBar">
+            <div id="completedProgress">30%</div>
+            <div id="incompleteProgress">70%</div>
+            
+        </div>
+    </div> -->
+
+    <form id="verificationForm">
+        <label for="documentType">Choose any one documnet to upload</label>
+        <div>
+        <button type="button" class="documentTypeBtn">Aadhar Card</button>
+        <button type="button" class="documentTypeBtn">PAN Card</button>
+</div>
+<label for="documentType">Document Detail(No special characters allowed)</label>
+        <input type="text" id="documentNumber" placeholder="Enter Document Number">
+
+        <div class="imageBox">
+            <label for="frontImage">Front Side Image:</label>
+            <!-- <input type="file" id="frontImage" accept="image/*"> -->
+            <div class="file-input-wrapper">
+                <span class="file-input-icon"><i class="fas fa-upload"></i></span>
+                <input type="file" id="frontImage" accept="image/*">
+                <span class="file-input-button">Choose File</span>
+            </div>
+        </div>
+
+        <div class="imageBox">
+            <label for="backImage">Back Side Image:</label>
+          
+            
+                <!-- File input with icon -->
+                <div class="file-input-wrapper">
+                    <span class="file-input-icon"><i class="fas fa-upload"></i></span>
+                    <input type="file" id="backImage" accept="image/*">
+                    <span class="file-input-button">Choose File</span>
+                </div>
+        </div>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+        <button type="button" class="resetBtn" onclick="resetForm()">Reset</button>
+    </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+<script>
+   
+    function setProgress(percentage) {
+        var progressBar = document.getElementById('progressBar');
+        var completedProgress = document.getElementById('completedProgress');
+        var incompleteProgress = document.getElementById('incompleteProgress');
+
+        completedProgress.innerHTML = percentage + '%';
+        progressBar.style.width = percentage + '%';
+        incompleteProgress.style.width = (100 - percentage) + '%';
+    }
+
+    function submitForm() {
+        // Display progress bar
+        var progressContainer = document.getElementById('progressContainer');
+        progressContainer.style.display = 'block';
+
+        // Simulate progress (replace this with your actual form submission logic)
+        setProgress(30);
+
+        // Simulate remaining progress (replace this with your actual form submission logic)
+        var remainingProgress = 70;
+        var interval = setInterval(function () {
+            if (remainingProgress <= 0) {
+                clearInterval(interval);
+                // Alert success message or perform any other post-submission actions
+                alert('Form submitted successfully!');
+            } else {
+                remainingProgress -= 10;
+                setProgress(30 + (70 - remainingProgress));
+            }
+        }, 200);
+    }
+
+    function resetForm() {
+        // Reset form fields
+        document.getElementById('verificationForm').reset();
+
+        // Hide progress bar on form reset
+        document.getElementById('progressContainer').style.display = 'none';
+    }
+</script>
+
+</script>
+
+</body>
+</html>
